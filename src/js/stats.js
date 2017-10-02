@@ -88,10 +88,10 @@ var stats = (function(kpretty, round) {
 	function push(time) {
         var now = new Date();
         if (typeof time[0] == "string") {
-			times.push([now, time[2], time[1] || scramble, time[0]]);
+			times.push([time[2], time[1] || scramble, time[0], now]);
 			time = time[2];
 		} else {
-			times.push([now, time, scramble, ""]);
+			times.push([time, scramble, "", now]);
 		}
 		save();
 		if (time.length-1 > curDim) {
