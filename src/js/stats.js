@@ -86,11 +86,12 @@ var stats = (function(kpretty, round) {
 	}
 
 	function push(time) {
-		if (typeof time[0] == "string") {
-			times.push([time[2], time[1] || scramble, time[0]]);
+        var now = new Date();
+        if (typeof time[0] == "string") {
+			times.push([now, time[2], time[1] || scramble, time[0]]);
 			time = time[2];
 		} else {
-			times.push([time, scramble, ""]);
+			times.push([now, time, scramble, ""]);
 		}
 		save();
 		if (time.length-1 > curDim) {
@@ -1254,7 +1255,8 @@ var stats = (function(kpretty, round) {
 	}
 
 	function save() {
-		localStorage['session' + sessionIdx] = JSON.stringify(times);
+		console.log(times);
+        localStorage['session' + sessionIdx] = JSON.stringify(times);
 	}
 
 	function resultsHeight() {
